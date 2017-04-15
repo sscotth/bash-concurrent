@@ -807,8 +807,7 @@ concurrent() (
         export CONCURRENT_COMPACT=${CONCURRENT_COMPACT:-0}
 
         __crt__use_compact_status() {
-            # [[ "${CONCURRENT_COMPACT}" != "0" || "${__crt__task_count}" -ge "$(tput lines)" ]]
-            false
+            [[ "${CONCURRENT_COMPACT}" != "-1" && "${CONCURRENT_COMPACT}" != "0" || "${__crt__task_count}" -ge "$(tput lines)" ]]
         }
 
         if __crt__use_compact_status; then
